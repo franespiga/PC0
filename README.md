@@ -75,6 +75,7 @@ Si te bloqueas en este paso, siempre puedes descargarlo manualmente y guardarlo 
 
 <details>
   <summary>Mostrar solución</summary>
+  
 ```python
 import pandas as pd
 import os
@@ -92,6 +93,7 @@ def get_dataset():
     df = pd.read_csv(dataset_path)
     return df
 ```
+
 </details>
 
 ---
@@ -101,31 +103,41 @@ def get_dataset():
 1. Crea un archivo llamado `01_PC0_companion.ipynb` en la carpeta `notebooks/`.
 2. El contenido del notebook debe incluir los siguientes pasos:
 
+### Paso 1: Importar la función `get_dataset`
+
 <details>
   <summary>Mostrar solución</summary>
-### Paso 1: Importar la función `get_dataset`
+  
+
 ```python
 from src.utils import get_dataset
 ```
+
 </details>
 
 ### Paso 2: Crear la carpeta `data` en el nivel raíz del proyecto
+
 <details>
   <summary>Mostrar solución</summary>
+  
 ```python
 import os
 
 if not os.path.exists("data"):
     os.makedirs("data")
 ```
+
 </details>
 
 ### Paso 3: Descargar y cargar el dataset en memoria
+
 <details>
   <summary>Mostrar solución</summary>
+
 ```python
 df = get_dataset()
 ```
+
 </details>
 
 ### Paso 4: Guardar el dataframe en dos formatos
