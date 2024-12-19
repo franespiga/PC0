@@ -143,10 +143,21 @@ df = get_dataset()
 ### Paso 4: Guardar el dataframe en dos formatos
 
 1. Como un archivo CSV llamado `raw.csv` en la carpeta `data`:
+   
+<details>
+  <summary>Mostrar solución</summary>
+  
 ```python
 df.to_csv("data/raw.csv", index=False)
 ```
+
+</details>
+
 2. Como una base de datos SQLite llamada `db` en la carpeta `data`:
+
+<details>
+  <summary>Mostrar solución</summary>
+  
 ```python
 import sqlite3
 
@@ -155,8 +166,15 @@ df.to_sql("hotels", conn, if_exists="replace", index=False)
 conn.close()
 ```
 
+</details>
+
+
 ### Paso 5: Realizar consultas
 1. Usando SQL y Pandas para contar los hoteles por categoría (`HotelRatings`) en cada país:
+
+ <details>
+  <summary>Mostrar solución</summary>
+   
 ```python
 conn = sqlite3.connect("data/db")
 query = """
@@ -168,20 +186,42 @@ sql_results = pd.read_sql_query(query, conn)
 print(sql_results)
 conn.close()
 ```
+
+</details>
+
+   
 2. Usando únicamente Pandas:
+
+ <details>
+  <summary>Mostrar solución</summary>
+   
 ```python
 pandas_results = df.groupby(["HotelRatings", "Country"]).size().reset_index(name="HotelCount")
 print(pandas_results)
 ```
 
+</details>
+
+
 ### Paso 6: Comparar resultados
+
+ <details>
+  <summary>Mostrar solución</summary>
+   
 ```python
 assert sql_results.equals(pandas_results), "Los resultados no coinciden."
 print("Los resultados coinciden.")
 ```
 
+</details>
+
+
 ### Paso 7: Análisis exploratorio de datos (EDA)
 Incluye gráficos o resúmenes descriptivos que permitan entender mejor el dataset:
+
+ <details>
+  <summary>Como por ejemplo...</summary>
+
 ```python
 import matplotlib.pyplot as plt
 
@@ -191,6 +231,9 @@ plt.show()
 
 print(df.describe())
 ```
+
+
+</details>
 
 ---
 
